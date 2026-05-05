@@ -1,0 +1,482 @@
+{
+  "User 1": {
+    "speaker": "User 1",
+    "total_conversations": 11003,
+    "total_messages": 98079,
+    "interests": [
+      {
+        "topic_id": 14,
+        "label": "Today & Family & Dogs",
+        "keywords": [
+          "today",
+          "family",
+          "dogs",
+          "hard",
+          "interested"
+        ],
+        "weight": 0.0764
+      },
+      {
+        "topic_id": 2,
+        "label": "Music & Best & Movies",
+        "keywords": [
+          "music",
+          "best",
+          "movies",
+          "different",
+          "sound"
+        ],
+        "weight": 0.0758
+      },
+      {
+        "topic_id": 8,
+        "label": "People & Agree & Spend",
+        "keywords": [
+          "people",
+          "agree",
+          "spend",
+          "talking",
+          "kids"
+        ],
+        "weight": 0.0709
+      },
+      {
+        "topic_id": 9,
+        "label": "Friends & Dog & Games",
+        "keywords": [
+          "friends",
+          "dog",
+          "games",
+          "spending",
+          "bet"
+        ],
+        "weight": 0.0696
+      },
+      {
+        "topic_id": 11,
+        "label": "Watch & Working & Write",
+        "keywords": [
+          "watch",
+          "working",
+          "write",
+          "movie",
+          "writing"
+        ],
+        "weight": 0.0683
+      },
+      {
+        "topic_id": 6,
+        "label": "Cook & Food & Used",
+        "keywords": [
+          "cook",
+          "food",
+          "used",
+          "living",
+          "did"
+        ],
+        "weight": 0.0677
+      },
+      {
+        "topic_id": 4,
+        "label": "Books & Hobbies & Place",
+        "keywords": [
+          "books",
+          "hobbies",
+          "place",
+          "rock",
+          "welcome"
+        ],
+        "weight": 0.0657
+      },
+      {
+        "topic_id": 5,
+        "label": "Home & Better & Free",
+        "keywords": [
+          "home",
+          "better",
+          "free",
+          "forward",
+          "asking"
+        ],
+        "weight": 0.0657
+      },
+      {
+        "topic_id": 0,
+        "label": "Work & Check & Relax",
+        "keywords": [
+          "work",
+          "check",
+          "relax",
+          "ready",
+          "story"
+        ],
+        "weight": 0.0654
+      },
+      {
+        "topic_id": 7,
+        "label": "Read & Big & Reading",
+        "keywords": [
+          "read",
+          "big",
+          "reading",
+          "fan",
+          "weekend"
+        ],
+        "weight": 0.0648
+      },
+      {
+        "topic_id": 1,
+        "label": "Beautiful & Hiking & Live",
+        "keywords": [
+          "beautiful",
+          "hiking",
+          "live",
+          "relaxing",
+          "cats"
+        ],
+        "weight": 0.0644
+      },
+      {
+        "topic_id": 3,
+        "label": "Problem & Don & Band",
+        "keywords": [
+          "problem",
+          "don",
+          "band",
+          "school",
+          "cute"
+        ],
+        "weight": 0.0634
+      },
+      {
+        "topic_id": 12,
+        "label": "Interesting & Meet & Wow",
+        "keywords": [
+          "interesting",
+          "meet",
+          "wow",
+          "pets",
+          "guitar"
+        ],
+        "weight": 0.063
+      },
+      {
+        "topic_id": 10,
+        "label": "Job & Excited & Book",
+        "keywords": [
+          "job",
+          "excited",
+          "book",
+          "start",
+          "world"
+        ],
+        "weight": 0.0607
+      },
+      {
+        "topic_id": 13,
+        "label": "Walks & Recommendation & Places",
+        "keywords": [
+          "walks",
+          "recommendation",
+          "places",
+          "interests",
+          "visit"
+        ],
+        "weight": 0.0582
+      }
+    ],
+    "traits": [
+      {
+        "trait": "positive",
+        "confidence": 0.891,
+        "evidence_count": 76697
+      },
+      {
+        "trait": "curious",
+        "confidence": 0.665,
+        "evidence_count": 26089
+      },
+      {
+        "trait": "agreeable",
+        "confidence": 0.4464,
+        "evidence_count": 10945
+      }
+    ],
+    "style": {
+      "avg_message_length": 11.06,
+      "median_message_length": 10.0,
+      "max_message_length": 169,
+      "pct_short_messages": 0.11,
+      "pct_long_messages": 0.011,
+      "question_rate": 0.266,
+      "exclamation_rate": 0.108,
+      "ellipsis_rate": 0.0,
+      "emoji_rate": 0.0,
+      "caps_rate": 0.0007,
+      "avg_sentiment": 0.5054,
+      "positive_rate": 0.782,
+      "negative_rate": 0.027,
+      "neutral_rate": 0.192,
+      "sentiment_variance": 0.1148,
+      "formality_score": 0.48,
+      "vocabulary_richness": 0.1166,
+      "self_disclosure_rate": 0.64,
+      "hedging_rate": 0.0925,
+      "certainty_rate": 0.1217,
+      "humor_rate": 0.004,
+      "agreement_rate": 0.1116,
+      "empathy_rate": 0.059,
+      "total_messages": 98079
+    },
+    "values": {
+      "family_focus": 0.1086,
+      "career_focus": 0.1062,
+      "health_focus": 0.0563,
+      "social_focus": 0.1146,
+      "creative_focus": 0.1544,
+      "nature_focus": 0.1284,
+      "spiritual_focus": 0.0052,
+      "intellectual_focus": 0.2546
+    }
+  },
+  "User 2": {
+    "speaker": "User 2",
+    "total_conversations": 11003,
+    "total_messages": 93513,
+    "interests": [
+      {
+        "topic_id": 13,
+        "label": "Best & Asking & World",
+        "keywords": [
+          "best",
+          "asking",
+          "world",
+          "welcome",
+          "talking"
+        ],
+        "weight": 0.0757
+      },
+      {
+        "topic_id": 4,
+        "label": "Read & Books & Book",
+        "keywords": [
+          "read",
+          "books",
+          "book",
+          "check",
+          "hiking"
+        ],
+        "weight": 0.0745
+      },
+      {
+        "topic_id": 12,
+        "label": "Friends & Agree & Beautiful",
+        "keywords": [
+          "friends",
+          "agree",
+          "beautiful",
+          "hard",
+          "feeling"
+        ],
+        "weight": 0.0728
+      },
+      {
+        "topic_id": 3,
+        "label": "Work & Don & Mom",
+        "keywords": [
+          "work",
+          "don",
+          "mom",
+          "wow",
+          "recommendation"
+        ],
+        "weight": 0.0715
+      },
+      {
+        "topic_id": 6,
+        "label": "Games & Food & Today",
+        "keywords": [
+          "games",
+          "food",
+          "today",
+          "watch",
+          "video"
+        ],
+        "weight": 0.0704
+      },
+      {
+        "topic_id": 9,
+        "label": "Dog & Dogs & Used",
+        "keywords": [
+          "dog",
+          "dogs",
+          "used",
+          "animals",
+          "walks"
+        ],
+        "weight": 0.0702
+      },
+      {
+        "topic_id": 0,
+        "label": "Music & Big & Fan",
+        "keywords": [
+          "music",
+          "big",
+          "fan",
+          "place",
+          "song"
+        ],
+        "weight": 0.068
+      },
+      {
+        "topic_id": 10,
+        "label": "Family & Job & Movies",
+        "keywords": [
+          "family",
+          "job",
+          "movies",
+          "write",
+          "spending"
+        ],
+        "weight": 0.0665
+      },
+      {
+        "topic_id": 5,
+        "label": "Problem & Relaxing & Stay",
+        "keywords": [
+          "problem",
+          "relaxing",
+          "stay",
+          "movie",
+          "nature"
+        ],
+        "weight": 0.0648
+      },
+      {
+        "topic_id": 7,
+        "label": "People & Spend & Working",
+        "keywords": [
+          "people",
+          "spend",
+          "working",
+          "meet",
+          "family"
+        ],
+        "weight": 0.0646
+      },
+      {
+        "topic_id": 14,
+        "label": "Cook & Home & Long",
+        "keywords": [
+          "cook",
+          "home",
+          "long",
+          "writing",
+          "weekend"
+        ],
+        "weight": 0.0638
+      },
+      {
+        "topic_id": 1,
+        "label": "Different & Reading & Interesting",
+        "keywords": [
+          "different",
+          "reading",
+          "interesting",
+          "relax",
+          "kinds"
+        ],
+        "weight": 0.0631
+      },
+      {
+        "topic_id": 8,
+        "label": "Hobbies & Pets & Better",
+        "keywords": [
+          "hobbies",
+          "pets",
+          "better",
+          "forward",
+          "golden"
+        ],
+        "weight": 0.0613
+      },
+      {
+        "topic_id": 11,
+        "label": "Excited & Able & Rewarding",
+        "keywords": [
+          "excited",
+          "able",
+          "rewarding",
+          "country",
+          "bad"
+        ],
+        "weight": 0.0583
+      },
+      {
+        "topic_id": 2,
+        "label": "Listen & Living & Did",
+        "keywords": [
+          "listen",
+          "living",
+          "did",
+          "favorites",
+          "creative"
+        ],
+        "weight": 0.0548
+      }
+    ],
+    "traits": [
+      {
+        "trait": "positive",
+        "confidence": 0.9159999999999999,
+        "evidence_count": 77802
+      },
+      {
+        "trait": "agreeable",
+        "confidence": 0.46,
+        "evidence_count": 10753
+      },
+      {
+        "trait": "curious",
+        "confidence": 0.4525,
+        "evidence_count": 16925
+      }
+    ],
+    "style": {
+      "avg_message_length": 11.64,
+      "median_message_length": 11.0,
+      "max_message_length": 219,
+      "pct_short_messages": 0.099,
+      "pct_long_messages": 0.014,
+      "question_rate": 0.181,
+      "exclamation_rate": 0.105,
+      "ellipsis_rate": 0.0,
+      "emoji_rate": 0.0,
+      "caps_rate": 0.0008,
+      "avg_sentiment": 0.5377,
+      "positive_rate": 0.832,
+      "negative_rate": 0.029,
+      "neutral_rate": 0.139,
+      "sentiment_variance": 0.1052,
+      "formality_score": 0.478,
+      "vocabulary_richness": 0.1281,
+      "self_disclosure_rate": 0.677,
+      "hedging_rate": 0.0848,
+      "certainty_rate": 0.1206,
+      "humor_rate": 0.004,
+      "agreement_rate": 0.115,
+      "empathy_rate": 0.058,
+      "total_messages": 93513
+    },
+    "values": {
+      "family_focus": 0.1262,
+      "career_focus": 0.1101,
+      "health_focus": 0.0641,
+      "social_focus": 0.139,
+      "creative_focus": 0.1584,
+      "nature_focus": 0.1395,
+      "spiritual_focus": 0.0061,
+      "intellectual_focus": 0.2534
+    }
+  }
+}

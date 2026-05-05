@@ -1,26 +1,23 @@
-# Virtual environment
+# Virtual environment — never commit
 venv/
 .venv/
 env/
 
-# Logs
-logs/
+# API keys — never commit
+.env
+*.env
 
-# Python cache
+# logs
+logs
+
+# Raw data — large and potentially proprietary
+conversations.csv
+
+# Python cache — generated automatically
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-.Python
-
-# Build outputs (large, generated at runtime)
-outputs/index/
-outputs/persona/
-outputs/checkpoints/
-
-# Environment variables / API keys
-.env
-*.env
 
 # IDE
 .vscode/
@@ -29,6 +26,3 @@ outputs/checkpoints/
 # OS
 .DS_Store
 Thumbs.db
-
-# Raw data (large)
-conversations.csv
