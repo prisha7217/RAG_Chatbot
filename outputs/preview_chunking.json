@@ -1,0 +1,613 @@
+[
+  {
+    "conversation_id": 0,
+    "total_messages": 14,
+    "segments_detected": 3,
+    "raw_messages": [
+      {
+        "local_index": 0,
+        "global_index": 0,
+        "speaker": "User 1",
+        "text": "Hi! How are you?"
+      },
+      {
+        "local_index": 1,
+        "global_index": 1,
+        "speaker": "User 2",
+        "text": "Good, thanks for asking! How about yourself?"
+      },
+      {
+        "local_index": 2,
+        "global_index": 2,
+        "speaker": "User 1",
+        "text": "I'm doing pretty well.  I'm excited to be moving to a new city soon!"
+      },
+      {
+        "local_index": 3,
+        "global_index": 3,
+        "speaker": "User 2",
+        "text": "Oh that's awesome! What city are you moving to?"
+      },
+      {
+        "local_index": 4,
+        "global_index": 4,
+        "speaker": "User 1",
+        "text": "I'm moving to Portland, Oregon.  I'm going to be pursuing my culinary dreams there."
+      },
+      {
+        "local_index": 5,
+        "global_index": 5,
+        "speaker": "User 2",
+        "text": "That sounds amazing! I love Portland.  I'm originally from there."
+      },
+      {
+        "local_index": 6,
+        "global_index": 6,
+        "speaker": "User 1",
+        "text": "Really? That's so cool!  Do you still live there?"
+      },
+      {
+        "local_index": 7,
+        "global_index": 7,
+        "speaker": "User 2",
+        "text": "No, I moved away a few years ago.  But I still visit my family there often."
+      },
+      {
+        "local_index": 8,
+        "global_index": 8,
+        "speaker": "User 1",
+        "text": "That's great.  Do you have any favorite places to visit in Portland?"
+      },
+      {
+        "local_index": 9,
+        "global_index": 9,
+        "speaker": "User 2",
+        "text": "Yes, I love going to Powell's Books.  It's the largest independent bookstore in the world."
+      },
+      {
+        "local_index": 10,
+        "global_index": 10,
+        "speaker": "User 1",
+        "text": "That sounds amazing!  I've never been to Powell's Books before.  I'm definitely going to have to check it out."
+      },
+      {
+        "local_index": 11,
+        "global_index": 11,
+        "speaker": "User 2",
+        "text": "You definitely should!  It's a really cool place."
+      },
+      {
+        "local_index": 12,
+        "global_index": 12,
+        "speaker": "User 1",
+        "text": "Thanks for the recommendation!  I'm sure I'll love it."
+      },
+      {
+        "local_index": 13,
+        "global_index": 13,
+        "speaker": "User 2",
+        "text": "No problem!  I'm glad I could help."
+      }
+    ],
+    "topic_segments": [
+      {
+        "segment_id": "topic_conv00000_seg000",
+        "local_range": "0–8",
+        "global_range": "0–8",
+        "message_count": 9,
+        "topic_label": "Moving & Portland & City & Asking",
+        "summary": "User 1: I'm doing pretty well.  I'm excited to be moving to a new city soon! | User 1: I'm moving to Portland, Oregon.  I'm going to be pursuing my culinary dreams there. | User 2: No, I moved away a few years ago.  But I still visit my family there often.",
+        "messages": [
+          {
+            "local_index": 0,
+            "speaker": "User 1",
+            "text": "Hi! How are you?"
+          },
+          {
+            "local_index": 1,
+            "speaker": "User 2",
+            "text": "Good, thanks for asking! How about yourself?"
+          },
+          {
+            "local_index": 2,
+            "speaker": "User 1",
+            "text": "I'm doing pretty well.  I'm excited to be moving to a new city soon!"
+          },
+          {
+            "local_index": 3,
+            "speaker": "User 2",
+            "text": "Oh that's awesome! What city are you moving to?"
+          },
+          {
+            "local_index": 4,
+            "speaker": "User 1",
+            "text": "I'm moving to Portland, Oregon.  I'm going to be pursuing my culinary dreams there."
+          },
+          {
+            "local_index": 5,
+            "speaker": "User 2",
+            "text": "That sounds amazing! I love Portland.  I'm originally from there."
+          },
+          {
+            "local_index": 6,
+            "speaker": "User 1",
+            "text": "Really? That's so cool!  Do you still live there?"
+          },
+          {
+            "local_index": 7,
+            "speaker": "User 2",
+            "text": "No, I moved away a few years ago.  But I still visit my family there often."
+          },
+          {
+            "local_index": 8,
+            "speaker": "User 1",
+            "text": "That's great.  Do you have any favorite places to visit in Portland?"
+          }
+        ]
+      },
+      {
+        "segment_id": "topic_conv00000_seg001",
+        "local_range": "9–12",
+        "global_range": "9–12",
+        "message_count": 4,
+        "topic_label": "Recommendation & Place & Powell & Books",
+        "summary": "User 2: Yes, I love going to Powell's Books.  It's the largest independent bookstore in the world. | User 1: That sounds amazing!  I've never been to Powell's Books before.  I'm definitely going to have to check it out. | User 2: You definitely should!  It's a really cool place.",
+        "messages": [
+          {
+            "local_index": 9,
+            "speaker": "User 2",
+            "text": "Yes, I love going to Powell's Books.  It's the largest independent bookstore in the world."
+          },
+          {
+            "local_index": 10,
+            "speaker": "User 1",
+            "text": "That sounds amazing!  I've never been to Powell's Books before.  I'm definitely going to have to check it out."
+          },
+          {
+            "local_index": 11,
+            "speaker": "User 2",
+            "text": "You definitely should!  It's a really cool place."
+          },
+          {
+            "local_index": 12,
+            "speaker": "User 1",
+            "text": "Thanks for the recommendation!  I'm sure I'll love it."
+          }
+        ]
+      },
+      {
+        "segment_id": "topic_conv00000_seg002",
+        "local_range": "13–13",
+        "global_range": "13–13",
+        "message_count": 1,
+        "topic_label": "Problem & Help & Glad",
+        "summary": "No problem!  I'm glad I could help.",
+        "messages": [
+          {
+            "local_index": 13,
+            "speaker": "User 2",
+            "text": "No problem!  I'm glad I could help."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "conversation_id": 1,
+    "total_messages": 14,
+    "segments_detected": 3,
+    "raw_messages": [
+      {
+        "local_index": 0,
+        "global_index": 14,
+        "speaker": "User 1",
+        "text": "Hey how are you doing?"
+      },
+      {
+        "local_index": 1,
+        "global_index": 15,
+        "speaker": "User 2",
+        "text": "Doing well, how about yourself?"
+      },
+      {
+        "local_index": 2,
+        "global_index": 16,
+        "speaker": "User 1",
+        "text": "I'm doing great! I'm a fulltime student studying radiology at a local college and I also play in a band that my parents don't know about."
+      },
+      {
+        "local_index": 3,
+        "global_index": 17,
+        "speaker": "User 2",
+        "text": "That's awesome! I'm a big fan of punk music myself, and I like to run and do yoga in my spare time."
+      },
+      {
+        "local_index": 4,
+        "global_index": 18,
+        "speaker": "User 1",
+        "text": "Nice! I've been meaning to try yoga but I've never really had the time."
+      },
+      {
+        "local_index": 5,
+        "global_index": 19,
+        "speaker": "User 2",
+        "text": "It's really great for stress relief and it's a great way to get in shape."
+      },
+      {
+        "local_index": 6,
+        "global_index": 20,
+        "speaker": "User 1",
+        "text": "I'll have to try it sometime! What about your Impala?"
+      },
+      {
+        "local_index": 7,
+        "global_index": 21,
+        "speaker": "User 2",
+        "text": "It's a 1964 Impala and it's in pretty good condition, but it needs a new paint job. I'm going to start working on that this weekend."
+      },
+      {
+        "local_index": 8,
+        "global_index": 22,
+        "speaker": "User 1",
+        "text": "That's awesome! I love classic cars."
+      },
+      {
+        "local_index": 9,
+        "global_index": 23,
+        "speaker": "User 2",
+        "text": "Thanks! It's a lot of work, but it's worth it in the end."
+      },
+      {
+        "local_index": 10,
+        "global_index": 24,
+        "speaker": "User 1",
+        "text": "I'm sure it will be!"
+      },
+      {
+        "local_index": 11,
+        "global_index": 25,
+        "speaker": "User 2",
+        "text": "So what's your favorite thing about being a student?"
+      },
+      {
+        "local_index": 12,
+        "global_index": 26,
+        "speaker": "User 1",
+        "text": "I love the freedom of being able to learn whatever I want."
+      },
+      {
+        "local_index": 13,
+        "global_index": 27,
+        "speaker": "User 2",
+        "text": "That's definitely the best part"
+      }
+    ],
+    "topic_segments": [
+      {
+        "segment_id": "topic_conv00001_seg000",
+        "local_range": "0–5",
+        "global_range": "14–19",
+        "message_count": 6,
+        "topic_label": "Yoga & Try & Meaning & Stress",
+        "summary": "User 1: I'm doing great! I'm a fulltime student studying radiology at a local college and I also play in a band that my parents don't know about. | User 2: That's awesome! I'm a big fan of punk music myself, and I like to run and do yoga in my spare time. | User 2: It's really great for stress relief and it's a great way to get in shape.",
+        "messages": [
+          {
+            "local_index": 0,
+            "speaker": "User 1",
+            "text": "Hey how are you doing?"
+          },
+          {
+            "local_index": 1,
+            "speaker": "User 2",
+            "text": "Doing well, how about yourself?"
+          },
+          {
+            "local_index": 2,
+            "speaker": "User 1",
+            "text": "I'm doing great! I'm a fulltime student studying radiology at a local college and I also play in a band that my parents don't know about."
+          },
+          {
+            "local_index": 3,
+            "speaker": "User 2",
+            "text": "That's awesome! I'm a big fan of punk music myself, and I like to run and do yoga in my spare time."
+          },
+          {
+            "local_index": 4,
+            "speaker": "User 1",
+            "text": "Nice! I've been meaning to try yoga but I've never really had the time."
+          },
+          {
+            "local_index": 5,
+            "speaker": "User 2",
+            "text": "It's really great for stress relief and it's a great way to get in shape."
+          }
+        ]
+      },
+      {
+        "segment_id": "topic_conv00001_seg001",
+        "local_range": "6–9",
+        "global_range": "20–23",
+        "message_count": 4,
+        "topic_label": "Impala & Try & Cars & Classic",
+        "summary": "User 2: It's a 1964 Impala and it's in pretty good condition, but it needs a new paint job. I'm going to start working on that this weekend. | User 1: That's awesome! I love classic cars. | User 2: Thanks! It's a lot of work, but it's worth it in the end.",
+        "messages": [
+          {
+            "local_index": 6,
+            "speaker": "User 1",
+            "text": "I'll have to try it sometime! What about your Impala?"
+          },
+          {
+            "local_index": 7,
+            "speaker": "User 2",
+            "text": "It's a 1964 Impala and it's in pretty good condition, but it needs a new paint job. I'm going to start working on that this weekend."
+          },
+          {
+            "local_index": 8,
+            "speaker": "User 1",
+            "text": "That's awesome! I love classic cars."
+          },
+          {
+            "local_index": 9,
+            "speaker": "User 2",
+            "text": "Thanks! It's a lot of work, but it's worth it in the end."
+          }
+        ]
+      },
+      {
+        "segment_id": "topic_conv00001_seg002",
+        "local_range": "10–13",
+        "global_range": "24–27",
+        "message_count": 4,
+        "topic_label": "Best & Student & Favorite & Learn",
+        "summary": "User 2: So what's your favorite thing about being a student? | User 1: I love the freedom of being able to learn whatever I want. | User 2: That's definitely the best part",
+        "messages": [
+          {
+            "local_index": 10,
+            "speaker": "User 1",
+            "text": "I'm sure it will be!"
+          },
+          {
+            "local_index": 11,
+            "speaker": "User 2",
+            "text": "So what's your favorite thing about being a student?"
+          },
+          {
+            "local_index": 12,
+            "speaker": "User 1",
+            "text": "I love the freedom of being able to learn whatever I want."
+          },
+          {
+            "local_index": 13,
+            "speaker": "User 2",
+            "text": "That's definitely the best part"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "conversation_id": 2,
+    "total_messages": 16,
+    "segments_detected": 4,
+    "raw_messages": [
+      {
+        "local_index": 0,
+        "global_index": 28,
+        "speaker": "User 1",
+        "text": "Hello there, how are you doing today?"
+      },
+      {
+        "local_index": 1,
+        "global_index": 29,
+        "speaker": "User 2",
+        "text": "Hi there, I am doing well, thanks! How about you?"
+      },
+      {
+        "local_index": 2,
+        "global_index": 30,
+        "speaker": "User 1",
+        "text": "I'm doing well, thanks for asking. What kind of things do you enjoy doing?"
+      },
+      {
+        "local_index": 3,
+        "global_index": 31,
+        "speaker": "User 2",
+        "text": "I enjoy reading, cooking, and spending time with my family."
+      },
+      {
+        "local_index": 4,
+        "global_index": 32,
+        "speaker": "User 1",
+        "text": "Reading is a great way to relax. I love to cook too! What is your favorite meal to make?"
+      },
+      {
+        "local_index": 5,
+        "global_index": 33,
+        "speaker": "User 2",
+        "text": "I love making chicken parmesan. I also love to make chocolate chip cookies."
+      },
+      {
+        "local_index": 6,
+        "global_index": 34,
+        "speaker": "User 1",
+        "text": "Oh, those both sound delicious! I love chicken parmesan too."
+      },
+      {
+        "local_index": 7,
+        "global_index": 35,
+        "speaker": "User 2",
+        "text": "Do you have any pets?"
+      },
+      {
+        "local_index": 8,
+        "global_index": 36,
+        "speaker": "User 1",
+        "text": "I have a dog and a cat. They are my best friends."
+      },
+      {
+        "local_index": 9,
+        "global_index": 37,
+        "speaker": "User 2",
+        "text": "Aww, that sounds adorable. I used to have a dog, but he passed away a few years ago."
+      },
+      {
+        "local_index": 10,
+        "global_index": 38,
+        "speaker": "User 1",
+        "text": "I'm so sorry to hear that. Dogs are such wonderful companions."
+      },
+      {
+        "local_index": 11,
+        "global_index": 39,
+        "speaker": "User 2",
+        "text": "They are. I miss him every day."
+      },
+      {
+        "local_index": 12,
+        "global_index": 40,
+        "speaker": "User 1",
+        "text": "I'm sure he misses you too."
+      },
+      {
+        "local_index": 13,
+        "global_index": 41,
+        "speaker": "User 2",
+        "text": "I know he does."
+      },
+      {
+        "local_index": 14,
+        "global_index": 42,
+        "speaker": "User 1",
+        "text": "Well, it was nice talking to you. I hope you have a great day!"
+      },
+      {
+        "local_index": 15,
+        "global_index": 43,
+        "speaker": "User 2",
+        "text": "You too! Thanks for chatting with me"
+      }
+    ],
+    "topic_segments": [
+      {
+        "segment_id": "topic_conv00002_seg000",
+        "local_range": "0–6",
+        "global_range": "28–34",
+        "message_count": 7,
+        "topic_label": "Enjoy & Today & Parmesan & Chicken",
+        "summary": "User 2: I enjoy reading, cooking, and spending time with my family. | User 1: Reading is a great way to relax. I love to cook too! What is your favorite meal to make? | User 2: I love making chicken parmesan. I also love to make chocolate chip cookies.",
+        "messages": [
+          {
+            "local_index": 0,
+            "speaker": "User 1",
+            "text": "Hello there, how are you doing today?"
+          },
+          {
+            "local_index": 1,
+            "speaker": "User 2",
+            "text": "Hi there, I am doing well, thanks! How about you?"
+          },
+          {
+            "local_index": 2,
+            "speaker": "User 1",
+            "text": "I'm doing well, thanks for asking. What kind of things do you enjoy doing?"
+          },
+          {
+            "local_index": 3,
+            "speaker": "User 2",
+            "text": "I enjoy reading, cooking, and spending time with my family."
+          },
+          {
+            "local_index": 4,
+            "speaker": "User 1",
+            "text": "Reading is a great way to relax. I love to cook too! What is your favorite meal to make?"
+          },
+          {
+            "local_index": 5,
+            "speaker": "User 2",
+            "text": "I love making chicken parmesan. I also love to make chocolate chip cookies."
+          },
+          {
+            "local_index": 6,
+            "speaker": "User 1",
+            "text": "Oh, those both sound delicious! I love chicken parmesan too."
+          }
+        ]
+      },
+      {
+        "segment_id": "topic_conv00002_seg001",
+        "local_range": "7–10",
+        "global_range": "35–38",
+        "message_count": 4,
+        "topic_label": "Pets & Dog & Best & Cat",
+        "summary": "User 1: I have a dog and a cat. They are my best friends. | User 2: Aww, that sounds adorable. I used to have a dog, but he passed away a few years ago. | User 1: I'm so sorry to hear that. Dogs are such wonderful companions.",
+        "messages": [
+          {
+            "local_index": 7,
+            "speaker": "User 2",
+            "text": "Do you have any pets?"
+          },
+          {
+            "local_index": 8,
+            "speaker": "User 1",
+            "text": "I have a dog and a cat. They are my best friends."
+          },
+          {
+            "local_index": 9,
+            "speaker": "User 2",
+            "text": "Aww, that sounds adorable. I used to have a dog, but he passed away a few years ago."
+          },
+          {
+            "local_index": 10,
+            "speaker": "User 1",
+            "text": "I'm so sorry to hear that. Dogs are such wonderful companions."
+          }
+        ]
+      },
+      {
+        "segment_id": "topic_conv00002_seg002",
+        "local_range": "11–13",
+        "global_range": "39–41",
+        "message_count": 3,
+        "topic_label": "Misses & Miss & Does",
+        "summary": "They are. I miss him every day. | I'm sure he misses you too. | I know he does.",
+        "messages": [
+          {
+            "local_index": 11,
+            "speaker": "User 2",
+            "text": "They are. I miss him every day."
+          },
+          {
+            "local_index": 12,
+            "speaker": "User 1",
+            "text": "I'm sure he misses you too."
+          },
+          {
+            "local_index": 13,
+            "speaker": "User 2",
+            "text": "I know he does."
+          }
+        ]
+      },
+      {
+        "segment_id": "topic_conv00002_seg003",
+        "local_range": "14–15",
+        "global_range": "42–43",
+        "message_count": 2,
+        "topic_label": "Chatting & Talking & Hope",
+        "summary": "Well, it was nice talking to you. I hope you have a great day! | You too! Thanks for chatting with me",
+        "messages": [
+          {
+            "local_index": 14,
+            "speaker": "User 1",
+            "text": "Well, it was nice talking to you. I hope you have a great day!"
+          },
+          {
+            "local_index": 15,
+            "speaker": "User 2",
+            "text": "You too! Thanks for chatting with me"
+          }
+        ]
+      }
+    ]
+  }
+]

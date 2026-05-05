@@ -1,0 +1,11 @@
+# ─── Serve Phase Only ────────────────────────────────────────────────────────
+sentence-transformers>=2.2   # Query embedding
+chromadb>=0.4                # Vector store lookup
+gradio>=6.0                  # Web UI
+pydantic>=2.0                # Data models
+numpy>=1.24                  # Numeric ops
+groq>=0.9                    # Primary LLM (llama-3.3-70b, free tier, sub-second)
+
+# Optional fallbacks (uncomment if needed):
+# openai>=1.0               # Option B: OpenAI GPT-4o-mini
+# google-generativeai>=0.4  # Option C: Gemini Flash

@@ -1,0 +1,37 @@
+{
+  "summary": {
+    "total_conversations": 11003,
+    "single_segment_count": 4,
+    "single_segment_pct": 0.04
+  },
+  "conversations": [
+    {
+      "conversation_id": 1211,
+      "message_count": 6,
+      "topic_label": "Haha & Aspirations & Hear & Talk",
+      "summary": "User 1: I'm glad I met you. You seem like a really cool person. | User 1: Maybe we can hang out sometime and talk more about comedy. | User 2: That would be great! I'd love to hear more about your aspirations.",
+      "global_range": "21124–21129"
+    },
+    {
+      "conversation_id": 2250,
+      "message_count": 6,
+      "topic_label": "Favorites & Motorcycle & Hear & Ride",
+      "summary": "User 1: I love to cook and I ride a motorcycle. I also love to relax on my comfy couch with a bowl of pistachio ice cream. What about you? | User 2: I love to go to the park with my grandkids and I don't consume caffeine. I used to follow the Grateful Dead when they toured and I miss my motorcycle. I think taking my kids to car shows and museums would be a great way to share my passion for cars with them. | User 1: That's so cool! I've always wanted to see the Grateful Dead live. I love going to parks with my family too. It's so nice to spend time with them. I have to say I'm a little jealous of your motorcycle! I've always wanted one but I don't have the time to ride it.",
+      "global_range": "39500–39505"
+    },
+    {
+      "conversation_id": 4478,
+      "message_count": 6,
+      "topic_label": "Gardening & Enjoy & Favorite & Cats",
+      "summary": "User 2: Hi there! I love gardening. I couldn't be a school teacher like my dad because I'm blind, but I love spending time outside with plants. My most valuable possession is the memories I've made gardening with my dad. | User 1: That's so sweet! My brother plays sports, and I like to watch him play. I don't like sports myself, but I enjoy the competition. I'm not married, I enjoy my freedom and the thrill of competition. | User 2: My husband is the CEO of Taco Bell, so we have a lot of fun cooking and eating together. We love cats, too. My family is full of witty people and we love to laugh.",
+      "global_range": "77840–77845"
+    },
+    {
+      "conversation_id": 5692,
+      "message_count": 6,
+      "topic_label": "Welcome & Inspiration & Liked & Glad",
+      "summary": "User 1: That was really good!  I loved the suspense and the action.  It was so exciting! | User 1: I think it's really cool that you're an author.  I've always wanted to write a book, but I've never had the time. | User 2: It's never too late to start!  You should give it a try.",
+      "global_range": "98799–98804"
+    }
+  ]
+}
