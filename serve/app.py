@@ -67,9 +67,9 @@ def chat(
     import re
 
     mode_key = {
-        "🔗 Unified (Recommended)": "unified",
-        "📚 RAG Only": "rag_only",
-        "👤 Persona Only": "persona_only",
+        "Unified (Recommended)": "unified",
+        "RAG Only": "rag_only",
+        "Persona Only": "persona_only",
     }.get(mode, "unified")
 
     # ── Detect direct conversation ID reference ───────────────────────────────
@@ -170,10 +170,10 @@ def build_ui():
         gr.HTML("""
         <div style="text-align:center; padding:20px 0 10px 0;">
             <h1 style="font-size:1.9em; font-weight:700; margin:0; color:#a78bfa;">
-                💬 Conversation Intelligence Chatbot
+                Conversation Intelligence Chatbot
             </h1>
             <p style="color:#94a3b8; margin:6px 0 0 0; font-size:0.92em;">
-                RAG + Persona-Aware · 191,592 messages · 11,003 conversations · 9,303 persona profiles
+                RAG + Persona-Aware 
             </p>
         </div>
         """)
@@ -181,15 +181,15 @@ def build_ui():
         with gr.Row():
             # ── Sidebar ───────────────────────────────────────────────────────
             with gr.Column(scale=1, min_width=230):
-                gr.Markdown("### ⚙️ Settings")
+                gr.Markdown("### Settings")
 
                 mode = gr.Radio(
                     choices=[
-                        "🔗 Unified (Recommended)",
-                        "📚 RAG Only",
-                        "👤 Persona Only",
+                        "Unified (Recommended)",
+                        "RAG Only",
+                        "Persona Only",
                     ],
-                    value="🔗 Unified (Recommended)",
+                    value="Unified (Recommended)",
                     label="Response Mode",
                 )
 
@@ -199,14 +199,14 @@ def build_ui():
                 )
 
                 gr.Markdown("""---
-**🔗 Unified** — Persona facts + retrieved conversations. Best for most queries.
+**Unified** — Persona facts + retrieved conversations. Best for most queries.
 
-**📚 RAG Only** — Pure retrieval. Best for "what did they say about X?"
+**RAG Only** — Pure retrieval. Best for "what did they say about X?"
 
-**👤 Persona Only** — Best for "what is User 1 like?"
+**Persona Only** — Best for "what is User 1 like?"
 
 ---
-**⚠️ About this dataset**
+**About this dataset**
 
 Each conversation is a **different pair of people**. "User 1" and "User 2" are role labels — not the same individuals across conversations.
 
@@ -247,9 +247,22 @@ Conflicting facts (e.g. different locations or pets) are **expected** — they c
         # ── Event wiring ──────────────────────────────────────────────────────
         def submit(message, history, mode, top_k):
             if not message.strip():
-                return history, "", message
-            new_history, debug = chat(message, history or [], mode, top_k)
-            return new_history, debug, ""
+                return
+
+            history = history or []
+
+            # ① Immediately show user message + typing indicator
+            pending = history + [
+                {"role": "user", "content": message},
+                {"role": "assistant", "content": "*Retrieving…*"},
+            ]
+            yield pending, "*Retrieving…*", ""
+
+            # ② Run the actual pipeline
+            new_history, debug = chat(message, history, mode, top_k)
+
+            # ③ Replace the placeholder with the real answer
+            yield new_history, debug, ""
 
         send_btn.click(
             fn=submit,

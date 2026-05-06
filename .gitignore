@@ -3,6 +3,9 @@ venv/
 .venv/
 env/
 
+# HF Spaces deployment — separate git repo, pushed to HF not GitHub
+hf_deployment/
+
 # API keys — never commit
 .env
 *.env

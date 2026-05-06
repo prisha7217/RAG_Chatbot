@@ -5,6 +5,8 @@ All tunable parameters, file paths, and model names live here.
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # ─── Project Root ────────────────────────────────────────────────────────────
 ROOT_DIR = Path(__file__).parent
