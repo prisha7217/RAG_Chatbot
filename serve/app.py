@@ -25,8 +25,10 @@ from sentence_transformers import SentenceTransformer
 from config import EMBEDDING_MODEL
 from retrieval.embedder import Embedder
 from retrieval.retriever import Retriever
+from retrieval.conflict_resolver import ConflictResolver
 from generation.generator import Generator
 from serve.context_builder import PersonaContextBuilder
+from intent.classifier import IntentClassifier
 
 logging.basicConfig(
     level=logging.INFO,
@@ -50,6 +52,12 @@ _generator = Generator()
 logger.info("Loading persona context builder...")
 _persona_builder = PersonaContextBuilder()
 
+logger.info("Loading intent classifier...")
+_classifier = IntentClassifier()   # loads SVM pickle; graceful if missing
+
+logger.info("Loading conflict resolver...")
+_resolver = ConflictResolver()
+
 logger.info("All components loaded. Starting Gradio UI...")
 
 # ─── Core chat function ───────────────────────────────────────────────────────
@@ -72,8 +80,29 @@ def chat(
         "Persona Only": "persona_only",
     }.get(mode, "unified")
 
+    # ── E1: Intent classification ─────────────────────────────────────────────
+    intent_label, intent_conf = _classifier.predict(message, _model)
+
+    # Fast-path: small-talk — skip retrieval entirely
+    if intent_label == "small-talk":
+        reply = (
+            "Hey! I'm here to help you explore the conversation dataset. "
+            "Try asking something like:\n"
+            "- *\"Does User 1 have any pets?\"*\n"
+            "- *\"What did the people in conversation 42 talk about?\"*\n"
+            "- *\"Is there anyone who works in healthcare?\"*"
+        )
+        new_history = history + [
+            {"role": "user", "content": message},
+            {"role": "assistant", "content": reply},
+        ]
+        debug = (
+            f"**🎯 Intent:** `small-talk` ({intent_conf:.0%}) — retrieval skipped\n"
+            f"**Latency:** {time.time() - t0:.2f}s"
+        )
+        return new_history, debug
+
     # ── Detect direct conversation ID reference ───────────────────────────────
-    # Matches: "conversation 42", "conv 42", "conv. 42", "#42"
     conv_id_match = re.search(
         r'\b(?:conversation|conv\.?)\s*#?(\d+)\b|#(\d+)\b',
         message, re.IGNORECASE
@@ -89,35 +118,62 @@ def chat(
     else:
         retrieval_ctx = _retriever.retrieve(query=message, top_k_topics=int(top_k))
 
-    # Build persona-enriched context
+    # ── E2: Conflict resolution (re-rank + contradiction detection) ───────────
+    resolved_ctx = _resolver.resolve(retrieval_ctx, query=message)
+
+    # ── Build persona-enriched context ────────────────────────────────────────
     full_context = _persona_builder.build(
         query=message,
-        retrieval_context=retrieval_ctx,
+        retrieval_context=resolved_ctx,
         mode=mode_key,
+        intent=intent_label,
     )
 
-    # Generate
+    # ── Generate ──────────────────────────────────────────────────────────────
     answer = _generator.generate(
         query=message,
-        context=retrieval_ctx,
+        context=resolved_ctx,
         full_context_str=full_context,
     )
 
     elapsed = time.time() - t0
 
-    # Debug panel
-    top_results = retrieval_ctx.all_results[:5]
+    # ── Debug panel ───────────────────────────────────────────────────────────
+    top_results = resolved_ctx.all_results[:5]
+
+    # Intent badge
+    intent_icon = {
+        "reminder": "🔍", "emotional-support": "💛",
+        "action-item": "📋", "unknown": "❓",
+    }.get(intent_label, "🎯")
     debug_lines = [
-        f"**Mode:** {mode} | **Latency:** {elapsed:.2f}s | **Results:** {len(retrieval_ctx.all_results)}",
+        f"**{intent_icon} Intent:** `{intent_label}` ({intent_conf:.0%}) "
+        f"| **Mode:** {mode} | **Latency:** {elapsed:.2f}s "
+        f"| **Results:** {len(resolved_ctx.all_results)}",
         f"**Lookup:** {'Direct (conv ' + str(direct_conv_id) + ')' if direct_conv_id is not None else 'Semantic search'}",
-        "",
-        "**Top retrieved segments:**",
     ]
+
+    # Contradiction flags
+    if resolved_ctx.has_contradictions:
+        debug_lines.append(
+            f"\n**⚠ Contradictions detected:** {len(resolved_ctx.contradiction_flags)}"
+        )
+        for flag in resolved_ctx.contradiction_flags[:3]:  # show up to 3
+            debug_lines.append(f"  - {flag.to_debug_string()}")
+
+    debug_lines += ["", "**Top retrieved segments (re-ranked):**"]
     for r in top_results:
         cid = r.metadata.get("conversation_id", "?")
         label = r.metadata.get("topic_label", "")
+        orig = r.metadata.get("original_cosine", r.score)
+        conflict_mark = ""
+        for flag in resolved_ctx.contradiction_flags:
+            if r.doc_id in (flag.result_a_id, flag.result_b_id):
+                conflict_mark = " ⚠"
+                break
         debug_lines.append(
-            f"- `[{r.source}]` Conv {cid} | score={r.score:.3f}"
+            f"- `[{r.source}]` Conv {cid} | composite={r.score:.3f} "
+            f"(cosine={orig:.3f}){conflict_mark}"
             + (f" | {label}" if label else "")
         )
 
@@ -128,6 +184,11 @@ def chat(
     })[:4]
     if conv_ids and _persona_builder.has_personas():
         debug_lines.append(f"\n**Persona lookups:** conv IDs {conv_ids}")
+
+    # Drift timeline (from context_builder)
+    drift_section = _persona_builder.get_drift_debug(conv_ids)
+    if drift_section:
+        debug_lines.append(f"\n---\n**📊 Drift Timeline:**\n{drift_section}")
 
     new_history = history + [
         {"role": "user", "content": message},

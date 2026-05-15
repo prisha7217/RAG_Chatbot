@@ -183,6 +183,99 @@ class ConversationPersona(BaseModel):
         return "\n".join(lines)
 
 
+# ─── Round 2: Drift Detection ─────────────────────────────────────────────────
+
+class SegmentMood(BaseModel):
+    """
+    Mood snapshot for a single topic segment within a conversation.
+    Computed from VADER sentiment + style stats on the segment's messages.
+    """
+    model_config = ConfigDict(frozen=True)
+
+    segment_index: int          # Position of this segment within the conversation (0-based)
+    checkpoint_id: str          # Links back to TopicCheckpoint.checkpoint_id
+    topic_label: str            # Topic label from the chunker (e.g. "Pets & Animals")
+    message_count: int
+
+    # Sentiment
+    avg_sentiment: float        # VADER compound, averaged across segment messages (-1 to 1)
+    sentiment_label: str        # "very_positive" | "positive" | "neutral" | "negative" | "very_negative"
+
+    # Style stats
+    question_rate: float        # Fraction of messages with '?'
+    exclamation_rate: float     # Fraction of messages with '!'
+    avg_message_length: float   # Avg words per message
+
+    # Human-readable mood summary (e.g. "curious & formal")
+    mood_label: str
+
+
+class DriftEvent(BaseModel):
+    """
+    A detected mood/tone shift between two adjacent topic segments.
+
+    Produced when either:
+    - Sentiment delta between segment[i] and segment[i+1] > DRIFT_SENTIMENT_THRESHOLD
+    - A key style metric (question rate, exclamation rate) changes beyond threshold
+    """
+    model_config = ConfigDict(frozen=True)
+
+    from_segment_index: int     # Segment where the drift originates
+    to_segment_index: int       # Segment where the new mood begins
+    from_mood: str              # Mood label of the earlier segment
+    to_mood: str                # Mood label of the later segment
+    sentiment_delta: float      # Signed change in avg_sentiment (positive = more positive)
+    drift_type: str             # "sentiment" | "style" | "both"
+
+    # What caused the drift — the topic label + keywords of the new segment
+    trigger_topic: str
+    trigger_keywords: list[str] = []
+
+    # Human-readable summary
+    description: str            # e.g. "Mood shifted from curious & formal → warm & expressive"
+
+
+class ConversationTimeline(BaseModel):
+    """
+    Full drift timeline for a single conversation.
+
+    Contains:
+    - One SegmentMood per topic segment (the temporal sequence)
+    - Zero or more DriftEvents (detected mood shifts between segments)
+
+    Stored per conversation_id in outputs/persona/drift_timelines.json.
+    """
+
+    conversation_id: int
+    speaker: str                # "User 1" or "User 2"
+    segment_count: int
+    drift_event_count: int
+
+    segments: list[SegmentMood]
+    drift_events: list[DriftEvent]
+
+    def to_context_string(self) -> str:
+        """Format drift timeline as a readable string for LLM context."""
+        if not self.segments:
+            return ""
+
+        lines = [
+            f"  Mood timeline for {self.speaker} "
+            f"({self.segment_count} segments, {self.drift_event_count} drift events):"
+        ]
+        for seg in self.segments:
+            lines.append(
+                f"    Seg {seg.segment_index + 1} [{seg.topic_label}]: "
+                f"{seg.mood_label} | sentiment={seg.avg_sentiment:+.2f}"
+            )
+        for evt in self.drift_events:
+            lines.append(
+                f"    ⟶ Drift at seg {evt.from_segment_index + 1}→{evt.to_segment_index + 1}: "
+                f"{evt.from_mood} → {evt.to_mood} "
+                f"(trigger: {evt.trigger_topic})"
+            )
+        return "\n".join(lines)
+
 
 
 class UserPersona(BaseModel):

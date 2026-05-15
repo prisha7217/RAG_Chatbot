@@ -273,6 +273,73 @@ def cmd_serve():
     )
 
 
+def cmd_drift():
+    """Round 2 — Phase 1: Detect persona drift across topic segments."""
+    import json
+    from data.parser import parse_conversations
+    from data.models import TopicCheckpoint
+    from persona.drift import DriftDetector
+    from config import CHECKPOINTS_DIR, DRIFT_TIMELINES_FILE
+
+    topic_file = CHECKPOINTS_DIR / "topic_checkpoints.json"
+    if not topic_file.exists():
+        logger.error(
+            f"topic_checkpoints.json not found at {topic_file}. "
+            "Run 'python main.py build' first."
+        )
+        return
+
+    logger.info("Loading topic checkpoints...")
+    with open(topic_file, "r", encoding="utf-8") as f:
+        raw_checkpoints = json.load(f)
+
+    # Reconstruct TopicCheckpoint objects (messages excluded when saved, so we pass empty list)
+    checkpoints = []
+    for cp_dict in raw_checkpoints:
+        try:
+            cp_dict.setdefault("messages", [])
+            checkpoints.append(TopicCheckpoint(**cp_dict))
+        except Exception as e:
+            logger.warning(f"Skipping malformed checkpoint: {e}")
+            continue
+    logger.info(f"Loaded {len(checkpoints):,} topic checkpoints.")
+
+    logger.info("Parsing conversations (needed for message-level stats)...")
+    dataset = parse_conversations()
+
+    detector = DriftDetector()
+    timelines = detector.detect_all(dataset.conversations, checkpoints)
+    output_path = detector.save(timelines)
+
+    # ── Summary ──────────────────────────────────────────────────────────────
+    events_total = sum(t.drift_event_count for t in timelines.values())
+    convs_with_drift = len({
+        t.conversation_id for t in timelines.values() if t.drift_event_count > 0
+    })
+
+    print("\n" + "=" * 58)
+    print("  DRIFT DETECTION RESULTS")
+    print("=" * 58)
+    print(f"  Timelines produced      : {len(timelines):,}")
+    print(f"  Total drift events      : {events_total:,}")
+    print(f"  Convos with drift       : {convs_with_drift:,}")
+    print(f"  Output file             : {output_path}")
+
+    # Sample output — show first conversation with drift
+    sample = next(
+        (t for t in timelines.values() if t.drift_event_count > 0), None
+    )
+    if sample:
+        print(f"\n  Sample — Conv {sample.conversation_id} / {sample.speaker}:")
+        print(sample.to_context_string())
+    print("=" * 58)
+
+def cmd_intent_train():
+    """Round 2 — Phase C: Train the offline intent classifier (SVM on embeddings)."""
+    from intent.train import main as train_main
+    train_main()
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="RAG Chatbot — Conversation Intelligence System",
@@ -283,10 +350,12 @@ Commands:
   build              Full build pipeline (phases 2-3): chunk → summarize → index
   build --index-only Re-index from saved checkpoints (skips Phase 2, ~5 min)
   persona            Phase 4: Extract user personas from all conversations
+  drift              Round 2: Detect mood/tone drift across topic segments
+  intent-train       Round 2: Train the offline intent classifier
   serve              Launch the Gradio chatbot (phase 5)
         """,
     )
-    parser.add_argument("command", choices=["parse", "build", "persona", "serve"])
+    parser.add_argument("command", choices=["parse", "build", "persona", "drift", "intent-train", "serve"])
     parser.add_argument(
         "--index-only",
         action="store_true",
@@ -300,6 +369,10 @@ Commands:
         cmd_build(index_only=args.index_only)
     elif args.command == "persona":
         cmd_persona()
+    elif args.command == "drift":
+        cmd_drift()
+    elif args.command == "intent-train":
+        cmd_intent_train()
     elif args.command == "serve":
         cmd_serve()
 

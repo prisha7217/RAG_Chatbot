@@ -70,3 +70,29 @@ TRAIT_AUTO_LABEL_SAMPLE = 500    # Messages to auto-label for trait classifier b
 # ─── Ensure output directories exist ─────────────────────────────────────────
 for _dir in [CHECKPOINTS_DIR, PERSONA_DIR, INDEX_DIR, LOGS_DIR]:
     _dir.mkdir(parents=True, exist_ok=True)
+
+
+# ─── Round 2: Drift Detection ─────────────────────────────────────────────────
+DRIFT_SENTIMENT_THRESHOLD = 0.15   # Minimum sentiment delta to flag a drift event
+DRIFT_STYLE_THRESHOLD     = 0.20   # Minimum change in question/exclamation rate for style drift
+DRIFT_TIMELINES_FILE      = PERSONA_DIR / "drift_timelines.json"
+
+
+# ─── Round 2: Intent Classification ──────────────────────────────────────────
+INTENT_CLASSES = ["reminder", "emotional-support", "action-item", "small-talk", "unknown"]
+INTENT_TRAINING_DATA_FILE = ROOT_DIR / "intent" / "training_data.json"
+INTENT_MODEL_DIR          = OUTPUTS_DIR / "intent"
+INTENT_MODEL_FILE         = INTENT_MODEL_DIR / "intent_svm.pkl"
+INTENT_EXAMPLES_PER_CLASS = 100    # Examples to generate per class via Groq
+INTENT_CONFIDENCE_FLOOR   = 0.55   # Below this confidence → fall back to "unknown"
+
+# Ensure intent model directory exists
+INTENT_MODEL_DIR.mkdir(parents=True, exist_ok=True)
+
+
+# ─── Round 2: Conflict Resolution ─────────────────────────────────────────────
+CONFLICT_COSINE_WEIGHT    = 0.40   # Original vector similarity
+CONFLICT_ENTITY_WEIGHT    = 0.30   # Entity overlap with query
+CONFLICT_EMOTION_WEIGHT   = 0.20   # Emotional significance (VADER |compound|)
+CONFLICT_RECENCY_WEIGHT   = 0.10   # Conversation_id order (weak tiebreaker)
+CONFLICT_SENTIMENT_SPREAD = 0.40   # VADER polarity spread threshold → contradiction flag

@@ -37,7 +37,13 @@ Your job:
 5. Do NOT invent, infer, or assume facts not in the context.
 6. Keep answers concise and well-structured.
 
+ADDITIONAL CONTEXT SIGNALS (may appear in the context):
+- [TONE GUIDANCE] lines: adjust your tone accordingly (empathetic for emotional queries, list format for action items, concise for reminders).
+- ⚠ Contradiction warnings: the retriever detected conflicting claims. Flag these explicitly in your answer.
+- PERSONA DRIFT TIMELINE: mood/style shifts within a conversation. Reference these when explaining emotional context.
+
 Do not mention ChromaDB, embeddings, vector search, or technical retrieval details.
+Do not mention "intent", "SVM", "classifier", or any system internals.
 """
 
 
@@ -67,7 +73,7 @@ class Generator:
     def generate(
         self,
         query: str,
-        context: RetrievalContext,
+        context,                          # RetrievalContext or ResolvedContext
         full_context_str: str | None = None,
     ) -> str:
         """
@@ -75,7 +81,7 @@ class Generator:
 
         Args:
             query:            The user's question.
-            context:          RetrievalContext from the Retriever.
+            context:          RetrievalContext or ResolvedContext from the pipeline.
             full_context_str: Pre-built persona-enriched context string.
                               If None, falls back to context.to_context_string().
         """
